@@ -5,6 +5,8 @@ import { Card } from 'react-bootstrap';
 import RenderData from './RenderData';
 import { blog } from './Data/ApiResponse';
 import LoginComponent from './LoginComponent';
+import ModalComponent from './ModalComponent';
+import OusAns from './OusAns';
 
 function App() {
 
@@ -23,7 +25,9 @@ function App() {
   return (
     <div className="App">
 
-    <LoginComponent/>
+      <OusAns />
+
+      {/* <LoginComponent/> */}
       {/* <BoostrapTesting data={{ dataValue, newArray }} >
         <h1> This is a children props  </h1>
       </BoostrapTesting>
@@ -47,10 +51,10 @@ function ChildFunction() {
 
   return (
     <div>
-    <RenderData />
+      <RenderData />
 
 
-     {/* {blog.map((value, index)=>{
+      {/* {blog.map((value, index)=>{
       return(
         <RenderData  key={index} dataValue={value} />
       )

@@ -9,6 +9,9 @@ In the project directory, you can run:
 
 ### `npm start`
 ![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
