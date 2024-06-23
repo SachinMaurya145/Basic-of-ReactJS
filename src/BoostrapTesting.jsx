@@ -12,7 +12,7 @@ let {dataValue} = data // descrureing -- img
     <>
       {[
         'Primary',
-        'Dark',].map((variant) => (
+        'Dark',].map((variant) => ( 
         <Card
           bg={variant.toLowerCase()}
           key={variant}
