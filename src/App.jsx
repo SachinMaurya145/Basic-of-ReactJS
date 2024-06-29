@@ -7,6 +7,7 @@ import { blog } from './Data/ApiResponse';
 import LoginComponent from './LoginComponent';
 import ModalComponent from './ModalComponent';
 import OusAns from './OusAns';
+import ParentToChildData from './ParentToChildData';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="App">
 
-      <OusAns />
+      <ParentToChildData />
 
       {/* <LoginComponent/> */}
       {/* <BoostrapTesting data={{ dataValue, newArray }} >

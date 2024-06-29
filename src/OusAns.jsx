@@ -6,15 +6,15 @@ const OusAns = () => {
     const newData = blog; // Assigning the imported blog data to a new variable
 
     // Function to handle toggling the visibility of answers
-    const toggleAnswer = (id) => { 
+    const toggleAnswer = (id) => {
         console.log("DAT A + ID ", openedIds, id); // Logging current state and the id of the clicked question
         if (openedIds.includes(id)) {
             // If the clicked question is already open, close it by removing its ID from the openedIds array
-            setOpenedIds(openedIds.filter(item => item !== id)); 
+            setOpenedIds(openedIds.filter(item => item !== id));
             console.log("ALL STE value ", openedIds); // Logging the updated state
         } else {
             // Otherwise, add the clicked question's ID to the openedIds array to open it
-            setOpenedIds([...openedIds, id]); 
+            setOpenedIds([...openedIds, id]);
             console.log("ALL STE ARRAY ", openedIds); // Logging the updated state
         }
     };
@@ -22,7 +22,7 @@ const OusAns = () => {
     return (
         <div>
             {/* Placeholder text for the component */}
-            NEW COMPONET _ SSS 
+            NEW COMPONET _ SSS
 
             <div>
                 {/* Mapping over the blog data to display questions and answers */}
