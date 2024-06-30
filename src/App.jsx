@@ -1,13 +1,14 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import './App.css';
-import BoostrapTesting from './BoostrapTesting';
-import { Card } from 'react-bootstrap';
-import RenderData from './RenderData';
-import { blog } from './Data/ApiResponse';
-import LoginComponent from './LoginComponent';
-import ModalComponent from './ModalComponent';
-import OusAns from './OusAns';
-import ParentToChildData from './ParentToChildData';
+// import BoostrapTesting from './BoostrapTesting';
+// import { Card } from 'react-bootstrap';
+// import RenderData from './RenderData';
+// import { blog } from './Data/ApiResponse';
+// import LoginComponent from './LoginComponent';
+// import ModalComponent from './ModalComponent';
+// import OusAns from './OusAns';
+// import ParentToChildData from './ParentToChildData';
+import TodoList from './componet/TodoList';
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
   return (
     <div className="App">
 
-      <ParentToChildData />
+      <TodoList />
 
       {/* <LoginComponent/> */}
       {/* <BoostrapTesting data={{ dataValue, newArray }} >
@@ -46,22 +47,22 @@ function App() {
 export default App;
 
 
-function ChildFunction() {
+// function ChildFunction() {
 
-  console.log(" blog NAMES", blog);
+//   console.log(" blog NAMES", blog);
 
-  return (
-    <div>
-      <RenderData />
-
-
-      {/* {blog.map((value, index)=>{
-      return(
-        <RenderData  key={index} dataValue={value} />
-      )
-     })} */}
-    </div>
-  );
+//   return (
+//     <div>
+//       <RenderData />
 
 
-}
+//       {/* {blog.map((value, index)=>{
+//       return(
+//         <RenderData  key={index} dataValue={value} />
+//       )
+//      })} */}
+//     </div>
+//   );
+
+
+// }
