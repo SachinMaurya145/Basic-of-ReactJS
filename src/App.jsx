@@ -8,8 +8,8 @@ import './App.css';
 // import ModalComponent from './ModalComponent';
 // import OusAns from './OusAns';
 // import ParentToChildData from './ParentToChildData';
-import TodoList from './componet/TodoList';
-
+// import TodoList from './componet/TodoList';
+import TabSystem from './componet/TabSystem';
 function App() {
 
   // const dataValue = {
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
 
-      <TodoList />
+      <TabSystem />
 
       {/* <LoginComponent/> */}
       {/* <BoostrapTesting data={{ dataValue, newArray }} >
