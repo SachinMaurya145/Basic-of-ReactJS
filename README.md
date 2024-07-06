@@ -11,6 +11,9 @@ In the project directory, you can run:
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)
+![alt text](image-8.png)
+![alt text](image-9.png)
+
 
 
 Runs the app in the development mode.\
