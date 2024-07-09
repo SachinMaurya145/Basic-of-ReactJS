@@ -10,6 +10,8 @@ import Services from './componet/Rounting/CommanCom/Pages/Services';
 import Header from './componet/Rounting/CommanCom/Header';
 import RouteNotfound from './componet/Rounting/RouteNotfound';
 import reportWebVitals from './reportWebVitals';
+import CRUDControlledStates from './ControlledCompForm/CRUDControlledStates';
+// import App from './App';
 
 // Define your routes as objects in an array
 const routes = [
@@ -27,14 +29,15 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <Router>
+      {/* <Router>
         <Header />
         <Routes>
           {routes.map((route, index) => (
             <Route key={index} path={route.path} element={route.element} />
           ))}
         </Routes>
-      </Router>
+      </Router> */}
+      <CRUDControlledStates />
     </React.StrictMode>
   );
 }
