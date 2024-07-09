@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Header() {
 
+    const userId = '55';
+
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
              <h3> This is a staic routing </h3>
@@ -15,6 +17,9 @@ function Header() {
                 </li>
                 <li>
                     <Link to="/contact">Contact</Link>
+                </li>
+                <li>
+                    <Link to={`/profile/${userId}`}>Profile </Link>
                 </li>
             </ul>
         </div>

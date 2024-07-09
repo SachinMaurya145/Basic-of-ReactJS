@@ -3,7 +3,7 @@ import React from 'react'
 function Services() {
   return (
     <div>
-        this is  a services comop 
+        this is  a services/ conatct Page comop 
     </div>
   )
 }
