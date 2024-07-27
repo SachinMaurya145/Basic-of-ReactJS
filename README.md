@@ -18,6 +18,8 @@ In the project directory, you can run:
 ![alt text](image-12.png)
 ![alt text](image-13.png)
 ![alt text](image-14.png)
+![alt text](image-15.png)
+![alt text](image-16.png)
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

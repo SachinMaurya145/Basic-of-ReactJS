@@ -11,6 +11,7 @@ import Header from './componet/Rounting/CommanCom/Header';
 import RouteNotfound from './componet/Rounting/RouteNotfound';
 import reportWebVitals from './reportWebVitals';
 import CRUDControlledStates from './ControlledCompForm/CRUDControlledStates';
+import App from './App';
 // import App from './App';
 
 // Define your routes as objects in an array
@@ -37,7 +38,8 @@ if (rootElement) {
           ))}
         </Routes>
       </Router> */}
-      <CRUDControlledStates />
+      <App />
+
     </React.StrictMode>
   );
 }
