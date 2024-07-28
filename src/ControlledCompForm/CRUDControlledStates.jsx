@@ -30,12 +30,45 @@ function PasswordCriteria({ criteria }) {
 
 function CRUDControlledStates() {
   const [allData, setAllData] = useState([]);
+  const [formEdit, setFormEdit] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
+  const [sortAsc, setSortAsc] = useState(true);
   const [formState, setFormState] = useState({
     userName: '',
     password: '',
     userEmail: '',
     message: '',
   });
+
+  const handleSort = () => {
+    const sortedData = [...allData].sort((a, b) => {
+      if (sortAsc) {
+        return a.userName.localeCompare(b.userName);
+      } else {
+        return b.userName.localeCompare(a.userName);
+      }
+    });
+    setAllData(sortedData);
+    setSortAsc(!sortAsc);
+  };
+
+
+  const hanldedelete = (value) => {
+    const newValue = allData.filter((val, index) => {
+      return index !== value;
+    });
+    setAllData(newValue);
+    console.log('value->>>> ', newValue);
+  }
+  console.log('value->>>> ', allData);
+
+  const hanldeEdit = (index) => {
+    setFormEdit(true);
+    console.log('edit->>>> ', index);
+    setEditIndex(index);
+    setFormState(allData[index]);
+    console.log('edit Data index ->>>> ', allData[index]);
+  }
 
   const [passwordCriteria, setPasswordCriteria] = useState([
     { text: 'Minimum length of 8 characters', valid: false },
@@ -73,7 +106,7 @@ function CRUDControlledStates() {
   };
 
   const validatePassword = (password) => {
-    console.log('pass->>>> ', password)
+
     const criteria = [
       { text: 'Minimum length of 8 characters', valid: password.length >= 8 },
       { text: 'At least one uppercase letter', valid: /[A-Z]/.test(password) },
@@ -109,23 +142,35 @@ function CRUDControlledStates() {
     //   return;
     // }
 
-    // Check if password criteria are met
-    if (passwordCriteria.some((item) => !item.valid)) {
-      alert('Password does not meet the required criteria!');
-      return;
-    }
+    // // Check if password criteria are met
+    // if (passwordCriteria.some((item) => !item.valid)) {
+    //   alert('Password does not meet the required criteria!');
+    //   return;
+    // }
 
     // Check for duplicate username or email
-    const isDuplicate = allData.some(data =>
-      data.userEmail === userEmail || data.userName === userName
-    );
-    if (isDuplicate) {
-      alert('Data with this email or username already exists!');
-      return;
+    if (formEdit) {
+      // Update the existing entry
+      const updatedData = allData.map((data, index) =>
+        index === editIndex ? formState : data
+      );
+      setAllData(updatedData);
+      setFormEdit(false);
+      setEditIndex(null);
+    } else {
+      // Check for duplicate username or email
+      const isDuplicate = allData.some(data =>
+        data.userEmail === userEmail || data.userName === userName
+      );
+      if (isDuplicate) {
+        alert('Data with this email or username already exists!');
+        return;
+      }
+      // Add the new data
+      setAllData((prevData) => [...prevData, formState]);
     }
 
     // Add the new data and reset the form state
-    setAllData((prevData) => [...prevData, formState]);
     setFormState({
       userName: '',
       password: '',
@@ -134,9 +179,11 @@ function CRUDControlledStates() {
     });
   };
 
+
+
   return (
     <div>
-       <h3>This is a React CRUD - Controlled - with States -- <div> <h3 style={{color:'blue',marginLeft: '200px'  }}>All Validation</h3></div></h3>
+      <h3>This is a React CRUD - colSpan="6" --  No data found -- <div> <h3 style={{ color: 'blue', marginLeft: '200px' }}>All Validation</h3></div></h3>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
         {['userName', 'userEmail', 'password', 'message'].map((field) => (
           <FormField
@@ -150,23 +197,54 @@ function CRUDControlledStates() {
         ))}
         <PasswordCriteria criteria={passwordCriteria} />
         <button style={{ marginTop: '20px' }} onClick={handleSubmit}>
-          Submit Data
+          {formEdit ? "update" : "submit"} Data
         </button>
       </div>
-      <div style={{ marginTop: '20px' }}>
-        <h4>Submitted Data: {allData.length}</h4>
-        {allData.length ? (
-          <ul>
-            {allData.map((data, index) => (
-              <li key={index}>
-                {data.userName} - {data.userEmail} - {data.message} - PASS - {data.password}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          'No data found'
-        )}
+      <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ width: '80%' }}>
+          <h4>Submitted Data: {allData.length}</h4>
+          {allData.length ? (
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th onClick={handleSort} style={{ cursor: 'pointer' }}>
+                    Username {sortAsc ? '▲' : '▼'}
+                  </th>
+                  <th>Email</th>
+                  <th>Message</th>
+                  <th>Password</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allData.map((data, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{data.userName}</td>
+                    <td>{data.userEmail}</td>
+                    <td>{data.message}</td>
+                    <td>{data.password}</td>
+                    <td>
+                      <button onClick={() => hanldedelete(index)}>Delete</button>
+                      <button onClick={() => hanldeEdit(index)}>Edit</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
+              <tbody>
+                <tr>
+                  <td colSpan="6">No data found</td>
+                </tr>
+              </tbody>
+            </table>
+          )}
+        </div>
       </div>
+
     </div>
   );
 }

@@ -38,7 +38,7 @@ if (rootElement) {
           ))}
         </Routes>
       </Router> */}
-      <App />
+      <CRUDControlledStates />
 
     </React.StrictMode>
   );
