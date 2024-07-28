@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FormField({ type, name, placeholder, value, onChange }) {
   return (
@@ -58,7 +60,13 @@ function CRUDControlledStates() {
       return index !== value;
     });
     setAllData(newValue);
-    console.log('value->>>> ', newValue);
+    console.log('value->>>> ', value);
+ // Get the username of the deleted item for the toast message
+ const deletedItem = allData[value];
+ const userName = deletedItem ? deletedItem.userName : "Unknown User";
+
+ // Display a toast error message with the deleted user's name
+ toast.error(`This is an error message! ${userName}`);
   }
   console.log('value->>>> ', allData);
 
@@ -157,6 +165,7 @@ function CRUDControlledStates() {
       setAllData(updatedData);
       setFormEdit(false);
       setEditIndex(null);
+      toast.success('This is a Upadted Data!');
     } else {
       // Check for duplicate username or email
       const isDuplicate = allData.some(data =>
@@ -168,6 +177,7 @@ function CRUDControlledStates() {
       }
       // Add the new data
       setAllData((prevData) => [...prevData, formState]);
+      toast.success(`Add successful! Data: ${JSON.stringify(formState)}`);
     }
 
     // Add the new data and reset the form state
@@ -183,6 +193,7 @@ function CRUDControlledStates() {
 
   return (
     <div>
+      <ToastContainer />
       <h3>This is a React CRUD - colSpan="6" --  No data found -- <div> <h3 style={{ color: 'blue', marginLeft: '200px' }}>All Validation</h3></div></h3>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
         {['userName', 'userEmail', 'password', 'message'].map((field) => (
