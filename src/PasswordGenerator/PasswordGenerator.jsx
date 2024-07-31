@@ -31,6 +31,10 @@ const PasswordGenerator = () => {
         validatePassword(generatedPassword);
     };
 
+    const copyPasswordFun = ()=>{
+        navigator.clipboard.writeText(password);
+    }
+
     const handleLengthChange = (e) => {
         setLength(e.target.value);
     };
@@ -104,8 +108,8 @@ const PasswordGenerator = () => {
             <button onClick={generatePassword}>Generate Password</button>
             {password ? (
                 <div>
-                    <h3>Generated Password:</h3>
-                    <p>{password}</p>
+                    <h3>Generated Password - With - Copy Pass:</h3>
+                    <button onClick={copyPasswordFun}>{password} - Copy Pass- </button>
                     <h4>Validation Criteria:</h4>
                     <ul>
                         {passwordCriteria.map((criterion, index) => (

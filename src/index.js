@@ -40,7 +40,7 @@ if (rootElement) {
           ))}
         </Routes>
       </Router> */}
-      <CountCharacter />
+      <PasswordGenerator />
 
     </React.StrictMode>
   );
