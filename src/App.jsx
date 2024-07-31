@@ -9,9 +9,10 @@ import './App.css';
 // import OusAns from './OusAns';
 // import ParentToChildData from './ParentToChildData';
 // import TodoList from './componet/TodoList';
-import TabSystem from './componet/TabSystem';
-import ToasterComponent from './ReactToster/ToasterComponent';
-import CustomToaster from './ReactToster/CustomToaster';
+import CountCharacter from './MathLogics/CountCharacter';
+// import TabSystem from './componet/TabSystem';
+// import ToasterComponent from './ReactToster/ToasterComponent';
+// import CustomToaster from './ReactToster/CustomToaster';
 function App() {
 
   // const dataValue = {
@@ -29,7 +30,7 @@ function App() {
   return (
     <div className="App">
 
-      <CustomToaster />
+      <CountCharacter />
 
       {/* <LoginComponent/> */}
       {/* <BoostrapTesting data={{ dataValue, newArray }} >
