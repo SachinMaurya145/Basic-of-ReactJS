@@ -9,8 +9,10 @@ import Profile from './componet/Rounting/CommanCom/Pages/Profile/Profile';
 import Services from './componet/Rounting/CommanCom/Pages/Services';
 import Header from './componet/Rounting/CommanCom/Header';
 import RouteNotfound from './componet/Rounting/RouteNotfound';
+import CountCharacter from './MathLogics/CountCharacter';
 import reportWebVitals from './reportWebVitals';
 import CRUDControlledStates from './ControlledCompForm/CRUDControlledStates';
+import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
 import App from './App';
 // import App from './App';
 
@@ -38,7 +40,7 @@ if (rootElement) {
           ))}
         </Routes>
       </Router> */}
-      <CRUDControlledStates />
+      <CountCharacter />
 
     </React.StrictMode>
   );
