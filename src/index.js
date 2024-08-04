@@ -10,6 +10,7 @@ import Services from './componet/Rounting/CommanCom/Pages/Services';
 import Header from './componet/Rounting/CommanCom/Header';
 import RouteNotfound from './componet/Rounting/RouteNotfound';
 import CountCharacter from './MathLogics/CountCharacter';
+import WeatherWeb from './FetchAPI/WeatherWeb';
 import reportWebVitals from './reportWebVitals';
 import CRUDControlledStates from './ControlledCompForm/CRUDControlledStates';
 import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
@@ -40,7 +41,7 @@ if (rootElement) {
           ))}
         </Routes>
       </Router> */}
-      <PasswordGenerator />
+      <WeatherWeb />
 
     </React.StrictMode>
   );
