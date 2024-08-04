@@ -17,15 +17,19 @@ function WeatherWeb() {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-        // let data = strings.sort((a, b) => a - b);
-        // console.log(data); 
-        // items.sort((a, b) => a.price - b.price); // price
-        // console.log(items);
-        console.log(" @@ sort 1  ", data)
-        const sort = data.sort((a, b) => a.username || a.email || a.city.localeCompare(b.name));
-        console.log(" @@ sort 22  ", sort)
-        setWeatherData(sort);
 
+      // Sort data by username, then by email, and finally by city
+      const sortedData = data.sort((a, b) => {
+        const usernameComparison = a.username.localeCompare(b.username);
+        if (usernameComparison !== 0) return usernameComparison;
+
+        const emailComparison = a.email.localeCompare(b.email);
+        if (emailComparison !== 0) return emailComparison;
+
+        return a.address.city.localeCompare(b.address.city);
+      });
+
+      setWeatherData(sortedData);
     } catch (error) {
       setError('Error fetching data');
     } finally {
@@ -38,10 +42,20 @@ function WeatherWeb() {
     fetchData();
   }, []);
 
-  // Filter data based on search input
+  // Filter data based on search input across all keys
   useEffect(() => {
-    const filteredData = weatherData.filter(val =>
-      val.username.toLowerCase().includes(search.toLowerCase())
+    const filteredData = weatherData.filter(val => 
+      Object.keys(val).some(key => {
+        const value = val[key];
+        // Check nested objects, for example: val.address.city
+        if (typeof value === 'object' && value !== null) {
+          return Object.keys(value).some(nestedKey =>
+            String(value[nestedKey]).toLowerCase().includes(search.toLowerCase())
+          );
+        }
+        // Check primitive types (string, number, etc.)
+        return String(value).toLowerCase().includes(search.toLowerCase());
+      })
     );
     setWeatherAllData(filteredData);
   }, [search, weatherData]);
@@ -58,7 +72,7 @@ function WeatherWeb() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h2>Today's Weather Live Data</h2>
+      <h2>Today's Weather Live Data - only  name // all key </h2>
       <div style={{ marginBottom: '20px' }}>
         <input
           type="text"
