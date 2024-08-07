@@ -12,7 +12,7 @@ function WeatherWeb() {
     setLoading(true);
     setError(null); // Reset error state before fetching
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users/');
+      const response = await fetch('https:///////jsonplaceholder.typicode.com/users/');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -30,6 +30,7 @@ function WeatherWeb() {
       });
 
       setWeatherData(sortedData);
+      console.log(" @@ RESP ", sortedData);
     } catch (error) {
       setError('Error fetching data');
     } finally {
@@ -49,7 +50,7 @@ function WeatherWeb() {
         const value = val[key];
         // Check nested objects, for example: val.address.city
         if (typeof value === 'object' && value !== null) {
-          return Object.keys(value).some(nestedKey =>
+          return Object.keys(value).some(nestedKey => //  some - any one 
             String(value[nestedKey]).toLowerCase().includes(search.toLowerCase())
           );
         }

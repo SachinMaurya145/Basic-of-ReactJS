@@ -11,6 +11,7 @@ import Header from './componet/Rounting/CommanCom/Header';
 import RouteNotfound from './componet/Rounting/RouteNotfound';
 import CountCharacter from './MathLogics/CountCharacter';
 import WeatherWeb from './FetchAPI/WeatherWeb';
+import FileUpload from './DynamicPDFHandle/FileUpload';
 import reportWebVitals from './reportWebVitals';
 import CRUDControlledStates from './ControlledCompForm/CRUDControlledStates';
 import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
@@ -41,7 +42,7 @@ if (rootElement) {
           ))}
         </Routes>
       </Router> */}
-      <WeatherWeb />
+      <FileUpload />
 
     </React.StrictMode>
   );
