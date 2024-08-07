@@ -42,7 +42,7 @@ if (rootElement) {
           ))}
         </Routes>
       </Router> */}
-      <FileUpload />
+      <WeatherWeb />
 
     </React.StrictMode>
   );
